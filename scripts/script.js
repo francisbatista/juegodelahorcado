@@ -1,3 +1,4 @@
+//Obteniendo los elementos necesarios del html para el funcionamiento de la página
 const contenedorLetras = document.getElementById("contenedorLetras");
 const pantallaTablero = document.getElementById("pantallaTablero");
 const pantallaPrincipal = document.getElementById("pantallaPrincipal");
@@ -10,11 +11,16 @@ const pantallaAgregarPalabra = document.getElementById("pantallaAgregarPalabra")
 const btnGuardar = document.getElementById("btnGuardar");
 const btnCancelar = document.getElementById("btnCancelar");
 const btnEmpezar = document.getElementById("btnEmpezar");
+const letrasFalladas = document.getElementById("letrasFalladas");
+const tablero = document.getElementById("myCanvas");
+const pincel = tablero.getContext("2d");
 
+
+let palabraSecreta = ""; //Variable que guarda la palabra que debe ser adivinada
+let espacioDeCadaLetra = []; //Array que almacena una lista de elementos div (uno por cada letra de la palabra secreta)
+
+//Esta finción dibuja una linea horizontal en la pantalla del juego
 function dibujarLineaCentral(){
-    const tablero = document.getElementById("myCanvas");
-    const pincel = tablero.getContext("2d");
-
     pincel.beginPath()
     pincel.lineWidth = 5;
     pincel.lineCap = "round";
@@ -26,14 +32,120 @@ function dibujarLineaCentral(){
 }
 dibujarLineaCentral();
 
-const arrayPalabras = [];
+/*Esta función dependiendo del número de intento fallido
+dibuja cada una de las lineas y formas que conforman el muñeco ahorcado*/
+function dibujarFormas(num){
+    if(num == 1){
+        pincel.beginPath();
+        pincel.lineWidth = 5;
+        pincel.lineCap = "square";
+        pincel.strokeStyle = "darkblue";
 
+        pincel.moveTo(250, 280);
+        pincel.lineTo(250,50);
+        pincel.stroke();
+        return;
+    }
+    if(num == 2){
+        pincel.beginPath();
+        pincel.lineWidth = 5;
+        pincel.lineCap = "square";
+        pincel.strokeStyle = "darkblue";
+
+        pincel.moveTo(250, 50);
+        pincel.lineTo(350,50);
+        pincel.stroke();
+        return;
+    }
+    if(num == 3){
+        pincel.beginPath();
+        pincel.lineWidth = 5;
+        pincel.lineCap = "square";
+        pincel.strokeStyle = "darkblue";
+
+        pincel.moveTo(350, 50);
+        pincel.lineTo(350,100);
+        pincel.stroke();
+        return;
+    }
+    if(num == 4){
+        pincel.beginPath();
+        pincel.lineWidth = 5;
+        pincel.lineCap = "square";
+        pincel.strokeStyle = "darkblue";
+
+        pincel.arc(350,120,20,0,2*3.14);
+        pincel.stroke();
+        return;
+    }
+    if(num == 5){
+        pincel.beginPath();
+        pincel.lineWidth = 5;
+        pincel.lineCap = "square";
+        pincel.strokeStyle = "darkblue";
+
+        pincel.moveTo(350, 140);
+        pincel.lineTo(350,190);
+        pincel.stroke();
+        return;
+    }
+    if(num == 6){
+        pincel.beginPath();
+        pincel.lineWidth = 5;
+        pincel.lineCap = "square";
+        pincel.strokeStyle = "darkblue";
+
+        pincel.moveTo(350, 190);
+        pincel.lineTo(330,240);
+        pincel.stroke();
+        return;
+    }
+    if(num == 7){
+        pincel.beginPath();
+        pincel.lineWidth = 5;
+        pincel.lineCap = "square";
+        pincel.strokeStyle = "darkblue";
+
+        pincel.moveTo(350, 190);
+        pincel.lineTo(370,240);
+        pincel.stroke();
+        return;
+    }
+    if(num == 8){
+        pincel.beginPath();
+        pincel.lineWidth = 5;
+        pincel.lineCap = "square";
+        pincel.strokeStyle = "darkblue";
+
+        pincel.moveTo(350, 165);
+        pincel.lineTo(390,200);
+        pincel.stroke();
+        return;
+    }
+    if(num == 9){
+        pincel.beginPath();
+        pincel.lineWidth = 5;
+        pincel.lineCap = "square";
+        pincel.strokeStyle = "darkblue";
+
+        pincel.moveTo(350, 165);
+        pincel.lineTo(310,200);
+        pincel.stroke();
+        return;
+    }
+}
+
+//Array que almacena algunas palabras que el usuario debe adivinar para poder ganar.
+const arrayPalabras = ["ALURA","ONE","DESAFIO","HTML","CURSO","AMOR","TRISTEZA","JUEGO","JS","CSS","CODIGO"];
+
+//Esta función prepara la interfaz principal del juego
 function nuevoJuego(){
+    document.addEventListener("keydown",leerLetras);
     contenedorLetras.innerHTML = "";
     let indice = Math.round(Math.random() * (arrayPalabras.length - 1));
-    let palabra = arrayPalabras[indice];
+    palabraSecreta = arrayPalabras[indice];
     let elementoDiv;
-    for(let i = 0; i < palabra.length; i++){
+    for(let i = 0; i < palabraSecreta.length; i++){
         elementoDiv = document.createElement("div");
         elementoDiv.setAttribute("class", "unDiv");
         contenedorLetras.appendChild(elementoDiv);
@@ -42,8 +154,17 @@ function nuevoJuego(){
         pantallaPrincipal.setAttribute("hidden", "true");
         pantallaTablero.removeAttribute("hidden");
     }
+    pincel.clearRect(0, 0, tablero.width, tablero.height);
+    dibujarLineaCentral();
+    conteoLetrasFalladas = 0;
+    conteoLetrasAsertadas = 0;
+    espacioDeCadaLetra = contenedorLetras.children;
+    letrasFalladas.innerHTML = "";
+    letrasFalladasArr = [];
+    btnNuevoJuego.focus();
 }
 
+//Esta función se encarga de almacenar nuevas palabras en el array de palabras para adivinar.
 function guardarPalabra(){
     if(entrada.value == ""){
         alert("¡Debes escribir una palabra!");
@@ -63,6 +184,49 @@ function guardarPalabra(){
     entrada.focus();
 }
 
+let letrasFalladasArr = []; //Array que almacena las letras de las teclas pulsadas que no forman parte de la palabra que se esta adivinando.
+let conteoLetrasFalladas = 0; //Variable que va contando las letras falladas. Es el parámetro que usa la función dibujarFormas.
+let conteoLetrasAsertadas = 0;//Variable que almacena la cuenta de las letras que sí forman parte de la palabra que se está adivinando.
+
+//Esta es la función que se ejecuta cuando el usuario pulsa una tecla.
+function leerLetras(ev){
+    let key = ev.key;
+    if(/[^a-z]/ig.test(key)) return;
+    if(ev.keyCode > 90 || ev.keyCode < 65) return;
+    key = key.toUpperCase();
+    if(palabraSecreta.includes(key)){
+        conteoLetrasAsertadas += 1;
+        let indice = palabraSecreta.indexOf(key);
+        espacioDeCadaLetra[indice].innerText = key;
+        letrasFalladasArr.push(key);
+        palabraSecreta = palabraSecreta.replace(key,".");
+        if(conteoLetrasAsertadas == palabraSecreta.length){
+            pincel.fillStyle = "green";
+            pincel.font = "32px Georgia";
+            pincel.fillText("Ganaste,",450,50);
+            pincel.fillText("Felicidades!",420,80);
+            document.removeEventListener("keydown",leerLetras);
+        }
+    }else{
+        conteoLetrasFalladas += 1;
+        if(!letrasFalladasArr.includes(key)){
+            const elmP = document.createElement("p");
+            elmP.innerText = key;
+            letrasFalladasArr.push(key);
+            letrasFalladas.appendChild(elmP);
+        }
+        dibujarFormas(conteoLetrasFalladas);
+        if(conteoLetrasFalladas == 9){
+            pincel.fillStyle = "red";
+            pincel.font = "32px Georgia";
+            pincel.fillText("Perdiste!",410,50);
+            pincel.fillText("Fin del juego",410,80);
+            document.removeEventListener("keydown",leerLetras);
+        }
+    }
+}
+
+//En esta parte se le agrega a cada botón su evento correspondiente
 btnIniciarJuego.addEventListener("click", nuevoJuego);
 btnNuevoJuego.addEventListener("click", nuevoJuego);
 btnDesistir.addEventListener("click", () => {
@@ -87,3 +251,4 @@ btnEmpezar.addEventListener("click", () => {
     pantallaTablero.removeAttribute("hidden");
     nuevoJuego();
 });
+

@@ -76,3 +76,11 @@
 #btnEmpezar{
     margin-left: 25px;
 }
+#letrasFalladas{
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+}
+#letrasFalladas p{
+    margin-left: 10px;
+}
