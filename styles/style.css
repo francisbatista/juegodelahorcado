@@ -1,0 +1,58 @@
+.logo{
+    margin: 50px 0px 0px 50px;
+}
+#myCanvas{
+    display: block;
+    margin: auto;
+}
+.botones{
+    text-align: center;
+    margin: 30px auto;
+}
+.botones button{
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    border-style: none;
+    
+}
+.botones button:active{
+    transform: scale(1.1);
+}
+#btnNuevoJuego{
+    background-color: darkblue;
+    color: white;
+    margin-right: 25px;
+}
+#contenedorLetras{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+.unDiv{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 32px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000000;;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: darkblue;
+    border-bottom-width: 5px;
+    margin: 10px;
+}
+#btnIniciarJuego{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    background-color: darkblue;
+    color: white;
+}
+#btnAgregarPalabra{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}

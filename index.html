@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="images/Vector.svg" alt="Logo de Alura">
+    </header>
+    <main>
+        <div id="pantallaPrincipal">
+            <div class="botones">
+                <button id="btnIniciarJuego">Iniciar Juego</button>
+                <button id="btnAgregarPalabra">Agregar Palabra</button>
+            </div>
+        </div>
+        <div id="pantallaTablero" hidden>
+            <canvas id="myCanvas" width="600" height="300" style="border: 1px solid #000000;"></canvas>
+            <div id="contenedorLetras"></div>
+            <div id="letrasFallidas"></div>
+            <div class="botones">
+                <button id="btnNuevoJuego">Nuevo Juego</button>
+                <button id="btnDesistir">Desistir</button>
+            </div>
+
+        </div>
+
+
+    </main>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
