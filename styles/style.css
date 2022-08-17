@@ -19,7 +19,7 @@
 .botones button:active{
     transform: scale(1.1);
 }
-#btnNuevoJuego{
+#btnNuevoJuego, #btnGuardar{
     background-color: darkblue;
     color: white;
     margin-right: 25px;
@@ -55,4 +55,24 @@
     display: block;
     margin: auto;
     margin-top: 10px;
+}
+
+.advertencia{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.advertencia p{
+    margin-left: 5px;
+}
+#pantallaAgregarPalabra input{
+    display: flex;
+    margin: 100px auto 300px;
+    font-size: 32px;
+    border-style: none;
+    outline: none;
+    color: gray;
+}
+#btnEmpezar{
+    margin-left: 25px;
 }

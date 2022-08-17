@@ -4,6 +4,12 @@ const pantallaPrincipal = document.getElementById("pantallaPrincipal");
 const btnIniciarJuego = document.getElementById("btnIniciarJuego");
 const btnNuevoJuego = document.getElementById("btnNuevoJuego");
 const btnDesistir = document.getElementById("btnDesistir");
+const entrada = document.getElementById("entrada");
+const btnAgregarPalabra = document.getElementById("btnAgregarPalabra");
+const pantallaAgregarPalabra = document.getElementById("pantallaAgregarPalabra");
+const btnGuardar = document.getElementById("btnGuardar");
+const btnCancelar = document.getElementById("btnCancelar");
+const btnEmpezar = document.getElementById("btnEmpezar");
 
 function dibujarLineaCentral(){
     const tablero = document.getElementById("myCanvas");
@@ -20,7 +26,7 @@ function dibujarLineaCentral(){
 }
 dibujarLineaCentral();
 
-const arrayPalabras = ["A","AA","AAAA","AAAAA","AAAAAA","AAAAAAA"];
+const arrayPalabras = [];
 
 function nuevoJuego(){
     contenedorLetras.innerHTML = "";
@@ -38,6 +44,25 @@ function nuevoJuego(){
     }
 }
 
+function guardarPalabra(){
+    if(entrada.value == ""){
+        alert("¡Debes escribir una palabra!");
+        entrada.focus();
+        return;
+    }
+    if(/[^A-Z]/g.test(entrada.value)){
+        alert("¡El texto NO puede contener lo siguiente: (números, letras con acentos, LETRAS MINÚSCULAS, espacios, guiones)");
+        entrada.value = "";
+        entrada.focus();
+        return;
+    }
+    if(!arrayPalabras.includes(entrada.value)){
+        arrayPalabras.push(entrada.value);
+    }
+    entrada.value = "";
+    entrada.focus();
+}
+
 btnIniciarJuego.addEventListener("click", nuevoJuego);
 btnNuevoJuego.addEventListener("click", nuevoJuego);
 btnDesistir.addEventListener("click", () => {
@@ -45,4 +70,20 @@ btnDesistir.addEventListener("click", () => {
         pantallaTablero.setAttribute("hidden","true");
         pantallaPrincipal.removeAttribute("hidden");
     }
+});
+btnAgregarPalabra.addEventListener("click", () => {
+    pantallaPrincipal.setAttribute("hidden","true");
+    pantallaAgregarPalabra.removeAttribute("hidden");
+    entrada.value = "";
+    entrada.focus();
+});
+btnGuardar.addEventListener("click", guardarPalabra);
+btnCancelar.addEventListener("click", () => {
+    pantallaAgregarPalabra.setAttribute("hidden", "true");
+    pantallaPrincipal.removeAttribute("hidden");
+});
+btnEmpezar.addEventListener("click", () => {
+    pantallaAgregarPalabra.setAttribute("hidden", "true");
+    pantallaTablero.removeAttribute("hidden");
+    nuevoJuego();
 });

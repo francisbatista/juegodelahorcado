@@ -20,6 +20,18 @@
                 <button id="btnAgregarPalabra">Agregar Palabra</button>
             </div>
         </div>
+        <div id="pantallaAgregarPalabra" hidden>
+            <input id="entrada" type="text" maxlength="8" placeholder="escriba una palabra">
+            <div class="botones botonesPantallaAgregarPalabra">
+                <div class="advertencia">
+                    <img src="images/Vector@2x.svg" alt="Ícono de información">
+                    <p>Máx. 8 caracteres</p>
+                </div>
+                <button id="btnGuardar">Añadir</button>
+                <button id="btnCancelar">Cancelar</button>
+                <button id="btnEmpezar">Empezar</button>
+            </div>
+        </div>
         <div id="pantallaTablero" hidden>
             <canvas id="myCanvas" width="600" height="300" style="border: 1px solid #000000;"></canvas>
             <div id="contenedorLetras"></div>
