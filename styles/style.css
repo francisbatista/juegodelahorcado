@@ -109,5 +109,16 @@ main{
     .botonesPantallaAgregarPalabra{
         display: flex;
     }
+    #teclado button{
+        width: 35px;
+        height: 50px;
+        border-radius: 5px;
+        border-style: none;
+        background-color: darkblue;
+        color: white;
+    }
+    #teclado button:active{
+        transform: scale(1.1);
+    }
 
 }
