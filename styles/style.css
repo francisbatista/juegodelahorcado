@@ -14,7 +14,7 @@ main{
     margin: 30px auto;
 }
 .botones button{
-    width: 200px;
+    width: 125px;
     height: 50px;
     border-radius: 20px;
     border-style: none;
@@ -32,15 +32,17 @@ main{
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
+    width: 300px;
+    margin: 0 auto;
 
 }
 .unDiv{
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    font-size: 32px;
+    font-size: 24px;
     width: 50px;
-    height: 50px;
+    height: 25px;
     border: 1px solid #000000;;
     border-top: none;
     border-left: none;
@@ -70,9 +72,13 @@ main{
 .advertencia p{
     margin-left: 5px;
 }
+#pantallaAgregarPalabra{
+    width: 500px;
+}
 #pantallaAgregarPalabra input{
     display: flex;
-    margin: 100px auto 300px;
+    margin: 100px auto 225px;
+    width: 300px;
     font-size: 32px;
     border-style: none;
     outline: none;
@@ -86,6 +92,7 @@ main{
     justify-content: center;
     font-size: 32px;
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 #letrasFalladas p{
     margin-left: 10px;
@@ -93,4 +100,14 @@ main{
 }
 #teclado{
     text-align: center;
+}
+
+@media screen and (max-width: 690px){
+    #pantallaAgregarPalabra{
+        width: 300px;
+    }
+    .botonesPantallaAgregarPalabra{
+        display: flex;
+    }
+
 }

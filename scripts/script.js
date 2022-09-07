@@ -27,8 +27,8 @@ function dibujarLineaCentral(){
     pincel.lineCap = "round";
     pincel.strokeStyle = "darkblue";
 
-    pincel.moveTo(220, 280);
-    pincel.lineTo(380, 280);
+    pincel.moveTo(25, 240);
+    pincel.lineTo(150, 240);
     pincel.stroke();
 }
 dibujarLineaCentral();
@@ -42,8 +42,8 @@ function dibujarFormas(num){
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
-        pincel.moveTo(250, 280);
-        pincel.lineTo(250,50);
+        pincel.moveTo(50, 240);
+        pincel.lineTo(50,50);
         pincel.stroke();
         return;
     }
@@ -53,8 +53,8 @@ function dibujarFormas(num){
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
-        pincel.moveTo(250, 50);
-        pincel.lineTo(350,50);
+        pincel.moveTo(50, 50);
+        pincel.lineTo(130,50);
         pincel.stroke();
         return;
     }
@@ -64,8 +64,8 @@ function dibujarFormas(num){
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
-        pincel.moveTo(350, 50);
-        pincel.lineTo(350,100);
+        pincel.moveTo(130, 50);
+        pincel.lineTo(130,75);
         pincel.stroke();
         return;
     }
@@ -75,7 +75,7 @@ function dibujarFormas(num){
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
-        pincel.arc(350,120,20,0,2*3.14);
+        pincel.arc(130,100,20,0,2*3.14);
         pincel.stroke();
         return;
     }
@@ -85,8 +85,8 @@ function dibujarFormas(num){
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
-        pincel.moveTo(350, 140);
-        pincel.lineTo(350,190);
+        pincel.moveTo(130, 120);
+        pincel.lineTo(130,150);
         pincel.stroke();
         return;
     }
@@ -96,8 +96,8 @@ function dibujarFormas(num){
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
-        pincel.moveTo(350, 190);
-        pincel.lineTo(330,240);
+        pincel.moveTo(130, 135);
+        pincel.lineTo(100, 150);
         pincel.stroke();
         return;
     }
@@ -107,8 +107,8 @@ function dibujarFormas(num){
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
-        pincel.moveTo(350, 190);
-        pincel.lineTo(370,240);
+        pincel.moveTo(130, 135);
+        pincel.lineTo(160, 150);
         pincel.stroke();
         return;
     }
@@ -118,8 +118,8 @@ function dibujarFormas(num){
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
-        pincel.moveTo(350, 165);
-        pincel.lineTo(390,200);
+        pincel.moveTo(130, 150);
+        pincel.lineTo(100, 200);
         pincel.stroke();
         return;
     }
@@ -129,15 +129,15 @@ function dibujarFormas(num){
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
-        pincel.moveTo(350, 165);
-        pincel.lineTo(310,200);
+        pincel.moveTo(130, 150);
+        pincel.lineTo(160,200);
         pincel.stroke();
         return;
     }
 }
 
 //Array que almacena algunas palabras que el usuario debe adivinar para poder ganar.
-const arrayPalabras = ["ALURA","ONE","DESAFIO","HTML","CURSO","AMOR","TRISTEZA","JUEGO","JS","CSS","CODIGO"];
+const arrayPalabras = ["ALURA","ONE","DESAFIO","HTML","JS","CSS"];
 
 //Esta función prepara la interfaz principal del juego
 function nuevoJuego(){
@@ -212,9 +212,9 @@ function leerLetras(ev){
         palabraSecreta = palabraSecreta.replace(key,".");
         if(conteoLetrasAsertadas == palabraSecreta.length){
             pincel.fillStyle = "green";
-            pincel.font = "32px Georgia";
-            pincel.fillText("Ganaste,",450,50);
-            pincel.fillText("Felicidades!",420,80);
+            pincel.font = "18px Georgia";
+            pincel.fillText("Ganaste,",180,50);
+            pincel.fillText("Felicidades!",180,80);
             document.removeEventListener("keydown",leerLetras);
             teclado.removeEventListener("click",leerLetras);
         }
@@ -229,9 +229,9 @@ function leerLetras(ev){
         dibujarFormas(conteoLetrasFalladas);
         if(conteoLetrasFalladas == 9){
             pincel.fillStyle = "red";
-            pincel.font = "32px Georgia";
-            pincel.fillText("Perdiste!",410,50);
-            pincel.fillText("Fin del juego",410,80);
+            pincel.font = "18px Georgia";
+            pincel.fillText("Perdiste!",180,50);
+            pincel.fillText("Fin del juego",180,80);
             document.removeEventListener("keydown",leerLetras);
             teclado.removeEventListener("click",leerLetras);
         }
