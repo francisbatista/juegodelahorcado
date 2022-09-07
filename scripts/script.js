@@ -137,7 +137,7 @@ function dibujarFormas(num){
 }
 
 //Array que almacena algunas palabras que el usuario debe adivinar para poder ganar.
-const arrayPalabras = ["ALURA","ONE","DESAFIO","HTML","JS","CSS"];
+const arrayPalabras = ["ALURA","ONE","HTML","JS","CSS"];
 
 //Esta función prepara la interfaz principal del juego
 function nuevoJuego(){
