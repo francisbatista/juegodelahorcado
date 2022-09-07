@@ -173,14 +173,14 @@ function guardarPalabra(){
         entrada.focus();
         return;
     }
-    if(/[^A-Z]/g.test(entrada.value)){
-        alert("¡El texto NO puede contener lo siguiente: (números, letras con acentos, LETRAS MINÚSCULAS, espacios, guiones)");
+    if(/[^a-z]/g.test(entrada.value)){
+        alert("¡El texto NO puede contener lo siguiente: (números, letras con acentos, espacios, guiones)");
         entrada.value = "";
         entrada.focus();
         return;
     }
     if(!arrayPalabras.includes(entrada.value)){
-        arrayPalabras.push(entrada.value);
+        arrayPalabras.push(entrada.value.toUpperCase());
     }
     entrada.value = "";
     entrada.focus();
