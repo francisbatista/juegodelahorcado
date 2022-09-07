@@ -116,6 +116,9 @@ main{
     #pantallaAgregarPalabra{
         width: 300px;
     }
+    #pantallaAgregarPalabra input{
+        margin: 100px auto 25px;
+    }
     .botonesPantallaAgregarPalabra{
         display: flex;
     }
