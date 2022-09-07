@@ -12,6 +12,7 @@ const btnGuardar = document.getElementById("btnGuardar");
 const btnCancelar = document.getElementById("btnCancelar");
 const btnEmpezar = document.getElementById("btnEmpezar");
 const letrasFalladas = document.getElementById("letrasFalladas");
+const teclado = document.getElementById("teclado");
 const tablero = document.getElementById("myCanvas");
 const pincel = tablero.getContext("2d");
 
@@ -141,6 +142,7 @@ const arrayPalabras = ["ALURA","ONE","DESAFIO","HTML","CURSO","AMOR","TRISTEZA",
 //Esta función prepara la interfaz principal del juego
 function nuevoJuego(){
     document.addEventListener("keydown",leerLetras);
+    teclado.addEventListener("click", leerLetras);
     contenedorLetras.innerHTML = "";
     let indice = Math.round(Math.random() * (arrayPalabras.length - 1));
     palabraSecreta = arrayPalabras[indice];
@@ -190,10 +192,18 @@ let conteoLetrasAsertadas = 0;//Variable que almacena la cuenta de las letras qu
 
 //Esta es la función que se ejecuta cuando el usuario pulsa una tecla.
 function leerLetras(ev){
-    let key = ev.key;
-    if(/[^a-z]/ig.test(key)) return;
-    if(ev.keyCode > 90 || ev.keyCode < 65) return;
-    key = key.toUpperCase();
+    let key;
+    if(ev.type != 'click'){
+        key = ev.key;
+        if(/[^a-z]/ig.test(key)) return;
+        if(ev.keyCode > 90 || ev.keyCode < 65) return;
+        key = key.toUpperCase();
+    }else if(ev.target.localName == 'button'){
+        key = ev.target.innerText;
+    }else{
+        return;
+    }
+    
     if(palabraSecreta.includes(key)){
         conteoLetrasAsertadas += 1;
         let indice = palabraSecreta.indexOf(key);
@@ -206,6 +216,7 @@ function leerLetras(ev){
             pincel.fillText("Ganaste,",450,50);
             pincel.fillText("Felicidades!",420,80);
             document.removeEventListener("keydown",leerLetras);
+            teclado.removeEventListener("click",leerLetras);
         }
     }else{
         conteoLetrasFalladas += 1;
@@ -222,6 +233,7 @@ function leerLetras(ev){
             pincel.fillText("Perdiste!",410,50);
             pincel.fillText("Fin del juego",410,80);
             document.removeEventListener("keydown",leerLetras);
+            teclado.removeEventListener("click",leerLetras);
         }
     }
 }
@@ -251,4 +263,5 @@ btnEmpezar.addEventListener("click", () => {
     pantallaTablero.removeAttribute("hidden");
     nuevoJuego();
 });
+
 
