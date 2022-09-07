@@ -173,7 +173,7 @@ function guardarPalabra(){
         entrada.focus();
         return;
     }
-    if(/[^a-z]/g.test(entrada.value)){
+    if(/[^a-z]/ig.test(entrada.value)){
         alert("¡El texto NO puede contener lo siguiente: (números, letras con acentos, espacios, guiones)");
         entrada.value = "";
         entrada.focus();
