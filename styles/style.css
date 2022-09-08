@@ -48,7 +48,7 @@ main{
     border-left: none;
     border-right: none;
     border-bottom-color: darkblue;
-    border-bottom-width: 5px;
+    border-bottom-width: 2px;
     margin: 10px;
 }
 #btnIniciarJuego{
