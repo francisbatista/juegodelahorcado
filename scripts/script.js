@@ -24,7 +24,7 @@ let palabraNoAdivinada = "";
 //Esta finción dibuja una linea horizontal en la pantalla del juego
 function dibujarLineaCentral(){
     pincel.beginPath()
-    pincel.lineWidth = 5;
+    pincel.lineWidth = 2;
     pincel.lineCap = "round";
     pincel.strokeStyle = "darkblue";
 
@@ -39,7 +39,7 @@ dibuja cada una de las lineas y formas que conforman el muñeco ahorcado*/
 function dibujarFormas(num){
     if(num == 1){
         pincel.beginPath();
-        pincel.lineWidth = 5;
+        pincel.lineWidth = 2;
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
@@ -50,7 +50,7 @@ function dibujarFormas(num){
     }
     if(num == 2){
         pincel.beginPath();
-        pincel.lineWidth = 5;
+        pincel.lineWidth = 2;
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
@@ -61,7 +61,7 @@ function dibujarFormas(num){
     }
     if(num == 3){
         pincel.beginPath();
-        pincel.lineWidth = 5;
+        pincel.lineWidth = 2;
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
@@ -72,7 +72,7 @@ function dibujarFormas(num){
     }
     if(num == 4){
         pincel.beginPath();
-        pincel.lineWidth = 5;
+        pincel.lineWidth = 2;
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
@@ -82,7 +82,7 @@ function dibujarFormas(num){
     }
     if(num == 5){
         pincel.beginPath();
-        pincel.lineWidth = 5;
+        pincel.lineWidth = 2;
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
@@ -93,7 +93,7 @@ function dibujarFormas(num){
     }
     if(num == 6){
         pincel.beginPath();
-        pincel.lineWidth = 5;
+        pincel.lineWidth = 2;
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
@@ -104,7 +104,7 @@ function dibujarFormas(num){
     }
     if(num == 7){
         pincel.beginPath();
-        pincel.lineWidth = 5;
+        pincel.lineWidth = 2;
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
@@ -115,7 +115,7 @@ function dibujarFormas(num){
     }
     if(num == 8){
         pincel.beginPath();
-        pincel.lineWidth = 5;
+        pincel.lineWidth = 2;
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
@@ -126,7 +126,7 @@ function dibujarFormas(num){
     }
     if(num == 9){
         pincel.beginPath();
-        pincel.lineWidth = 5;
+        pincel.lineWidth = 2;
         pincel.lineCap = "square";
         pincel.strokeStyle = "darkblue";
 
