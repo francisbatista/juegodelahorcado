@@ -19,6 +19,7 @@ const pincel = tablero.getContext("2d");
 
 let palabraSecreta = ""; //Variable que guarda la palabra que debe ser adivinada
 let espacioDeCadaLetra = []; //Array que almacena una lista de elementos div (uno por cada letra de la palabra secreta)
+let palabraNoAdivinada = "";
 
 //Esta finción dibuja una linea horizontal en la pantalla del juego
 function dibujarLineaCentral(){
@@ -146,6 +147,7 @@ function nuevoJuego(){
     contenedorLetras.innerHTML = "";
     let indice = Math.round(Math.random() * (arrayPalabras.length - 1));
     palabraSecreta = arrayPalabras[indice];
+    palabraNoAdivinada = palabraSecreta;
     let elementoDiv;
     for(let i = 0; i < palabraSecreta.length; i++){
         elementoDiv = document.createElement("div");
@@ -234,6 +236,10 @@ function leerLetras(ev){
             pincel.fillText("Fin del juego",180,80);
             document.removeEventListener("keydown",leerLetras);
             teclado.removeEventListener("click",leerLetras);
+            letrasFalladas.innerHTML = "";
+            const palabraS = document.createElement("p");
+            palabraS.innerText = "La palabra era " + palabraNoAdivinada;
+            letrasFalladas.appendChild(palabraS);
         }
     }
 }
