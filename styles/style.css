@@ -123,11 +123,11 @@ main{
         display: flex;
     }
     #teclado{
-        width: 300px;
+        width: 320px;
     }
     #teclado button{
-        width: 28.5px;
-        height: 30px;
+        width: 32px;
+        height: 33px;
         border-radius: 5px;
         border-style: none;
         background-color: darkblue;
@@ -136,6 +136,9 @@ main{
     }
     #teclado button:active{
         transform: scale(1.1);
+    }
+    #pantallaTablero{
+        width: 320px;
     }
 
 }
